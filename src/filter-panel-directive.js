@@ -132,7 +132,7 @@ angular.module('pchiwan.directives')
 			template: 
 				'<div class="adp-filter-panel container-fluid">' +
 					'<div class="row">' +
-						'<adp-filter ng-repeat="group in fpCtrl.filterGroups" title="group.title"></adp-filter>' +
+						'<filter ng-repeat="group in fpCtrl.filterGroups" title="group.title"></filter>' +
 					'</div>' +
 					'<div class="adp-filter-panel-buttons row">' +
 						'<button class="btn btn-default" ng-click="fpCtrl.clearAll()">Clear all</button>' +

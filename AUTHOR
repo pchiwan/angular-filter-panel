@@ -3,5 +3,7 @@
  * by Sílvia Mur Blanch aka PchiwaN
  * https://github.com/pchiwan/angular-filter-panel
  *
- * NOTE: Latest version of Underscore.js is required.
+ * REQUIREMENTS: 
+ * + Latest version of Underscore.js
+ * + Bootstrap CSS
  ********************/
