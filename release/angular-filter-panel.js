@@ -49,17 +49,17 @@ angular.module('pchiwan.directives')
 
 				for (var i = 0, l = filterProps.length; i < l; i++) {
 					var filterProp = filterProps[i];
-
-					//if no nulls -or empty values- allowed, filter them out
-					if (!allowNulls) {
-						dataSource = _.reject(dataSource, function (x) {
-							return x[filterProp] === null || x[filterProp] === '';
-						});
-					}
 					//group filter property by values
 					var groups = _.groupBy(dataSource, function (x) {
 						return x[filterProp];
 					});
+					//if no nulls -or empty values- allowed, filter them out of the groups
+		            if (!allowNulls) {
+		                if (groups.hasOwnProperty('null') || groups.hasOwnProperty('')) {
+		                    groups = _.omit(groups, ['null', '']);
+		                }
+		            }
+		            //create filter groups
 					self.filterGroups.push({
 						prop: filterProp,
 						title: filterProp.splitWord().capitalizeFirstLetter(),
