@@ -3,7 +3,9 @@
  * by Sílvia Mur Blanch aka PchiwaN
  * https://github.com/pchiwan/angular-filter-panel
  *
- * NOTE: Latest version of Underscore.js is required.
+ * REQUIREMENTS: 
+ * + Latest version of Underscore.js
+ * + Bootstrap CSS
  ********************/
 'use strict;'
 
@@ -158,11 +160,11 @@ angular.module('pchiwan.directives')
 				originalSource: '=source'
 			},
 			template: 
-				'<div class="adp-filter-panel container-fluid">' +
+				'<div class="filter-panel container-fluid">' +
 					'<div class="row">' +
-						'<adp-filter ng-repeat="group in fpCtrl.filterGroups" title="group.title"></adp-filter>' +
+						'<filter ng-repeat="group in fpCtrl.filterGroups" title="group.title"></filter>' +
 					'</div>' +
-					'<div class="adp-filter-panel-buttons row">' +
+					'<div class="filter-panel-buttons row">' +
 						'<button class="btn btn-default" ng-click="fpCtrl.clearAll()">Clear all</button>' +
 						'<button class="btn btn-primary" ng-click="fpCtrl.apply()">Apply</button>' +
 					'</div>' +
@@ -178,12 +180,12 @@ angular.module('pchiwan.directives')
 
 		return {
 			template: 
-				'<div class="adp-filter col-md-3 col-xs-4">' +
-					'<div class="row adp-filter-header">' +
+				'<div class="filter col-md-3 col-xs-4">' +
+					'<div class="row filter-header">' +
 						'<h4>{{group.title}}<h4>' +
 					'</div>' +
-					'<div class="row adp-filter-content">' +
-						'<div class="adp-filter-item" ng-repeat="filterItem in group.source">' +
+					'<div class="row filter-content">' +
+						'<div class="filter-item" ng-repeat="filterItem in group.source">' +
 							'<input type="checkbox" ng-model="filterItem.selected">' +
 							'&nbsp;<span>{{filterItem.value}}&nbsp;({{filterItem.count}})</span>' +
 						'</div>' +

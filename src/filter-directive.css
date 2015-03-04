@@ -1,18 +1,18 @@
-.adp-filter-panel .adp-filter-panel-buttons {
+.filter-panel .filter-panel-buttons {
   padding: 10px;
   float: right;
 }
-.adp-filter-panel .adp-filter-panel-buttons button {
+.filter-panel .filter-panel-buttons button {
   text-transform: uppercase;
   margin-left: 10px;
 }
-.adp-filter-panel .adp-filter {
+.filter-panel .filter {
   padding: 10px 30px;
 }
-.adp-filter-panel .adp-filter .adp-filter-header {
+.filter-panel .filter .filter-header {
   margin-bottom: 10px;
   border-bottom: 1px solid #999;
 }
-.adp-filter-panel .adp-filter .adp-filter-content .adp-filter-item {
+.filter-panel .filter .filter-content .filter-item {
   display: block;
 }

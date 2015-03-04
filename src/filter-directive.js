@@ -4,12 +4,12 @@ angular.module('pchiwan.directives')
 
 		return {
 			template: 
-				'<div class="adp-filter col-md-3 col-xs-4">' +
-					'<div class="row adp-filter-header">' +
+				'<div class="filter col-md-3 col-xs-4">' +
+					'<div class="row filter-header">' +
 						'<h4>{{group.title}}<h4>' +
 					'</div>' +
-					'<div class="row adp-filter-content">' +
-						'<div class="adp-filter-item" ng-repeat="filterItem in group.source">' +
+					'<div class="row filter-content">' +
+						'<div class="filter-item" ng-repeat="filterItem in group.source">' +
 							'<input type="checkbox" ng-model="filterItem.selected">' +
 							'&nbsp;<span>{{filterItem.value}}&nbsp;({{filterItem.count}})</span>' +
 						'</div>' +
