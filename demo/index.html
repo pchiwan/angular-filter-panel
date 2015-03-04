@@ -1,0 +1,82 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Angular filter panel</title>
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://rawgit.com/pchiwan/angular-filter-panel/master/release/angular-filter-panel.css" rel="stylesheet" type="text/css"/>
+
+    <script text="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
+    <script text="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+    <script text="text/javascript" src="https://rawgit.com/pchiwan/angular-filter-panel/master/release/angular-filter-panel.js"></script>
+    <script text="text/javascript" src="demo.js"></script>
+
+    <style>
+      body {
+        font-family: Calibri, 'Gill Sans';
+        padding: 20px 60px 0 60px;
+      }
+      .float-right{
+        float: right;
+      }
+      .center{
+        text-align: center;
+      }
+      .filter-container{
+        border: 1px solid #eee;
+        border-radius: 4px;
+      }
+      .search{
+        margin: 10px 0;
+      }
+      .search input{
+        width: 200px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-controller="appController as ctrl">
+      <h1>Angular filter panel</h1>
+      <hr>
+      <div class="filter-container">
+        <adp-filter-panel source="ctrl.dataSource" filter-props="ClientName,CountryName,Enabled"></adp-filter-panel>
+      </div>
+      <hr>
+      <div>
+        <div class="search row">
+          <div class="float-right">
+            <input type="text" placeholder="search..." ng-model="ctrl.searchExpr" />
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Cid</th>
+              <th>Client Name</th>
+              <th>Cuid</th>
+              <th>Entity Name</th>
+              <th class="center">Country Id</th>
+              <th class="center">Country Name</th>
+              <th class="center">Enabled</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in ctrl.filteredDataSource">
+              <td>{{item.Cid}}</td>
+              <td>{{item.ClientName}}</td>
+              <td>{{item.Cuid}}</td>
+              <td>{{item.EntityName}}</td>
+              <td class="center">{{item.CountryId}}</td>
+              <td class="center">{{item.CountryName}}</td>
+              <td class="center">
+                <input type="checkbox" ng-model="item.Enabled" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </body>
+</html>

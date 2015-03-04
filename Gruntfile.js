@@ -8,13 +8,6 @@ module.exports = function(grunt) {
       }
     },
 
-    ngtemplates:  {
-      'pchiwan.directives': {
-        src: 'src/**.html',
-        dest: 'src/templates.js'
-      }
-    },
-
     less: {
       release: {
         files: {
@@ -29,7 +22,6 @@ module.exports = function(grunt) {
           'AUTHOR', 
           'src/js.extensions.js',
           'src/module.js',
-          'src/templates.js',
           'src/filter-panel-directive.js',
           'src/filter-directive.js'
         ],
@@ -39,13 +31,11 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-angular-templates');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-less');
 
   grunt.registerTask('build', [
     'clean',
-    'ngtemplates',
     'concat',
     'less'
   ]);
