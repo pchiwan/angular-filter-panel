@@ -48,12 +48,11 @@ table {
 
 /* LAYOUT STYLES */
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: 1em;
+  font-family: 'Open Sans', Helvetica, Arial, serif;
+  font-size: 14px;
   line-height: 1.5;
-  color: #6d6d6d;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-  background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat;
+  color: #303030;  
+  background: url(../images/body-bg.png) 0 0 repeat;
 }
 
 a {
@@ -66,32 +65,28 @@ a:hover {
 header {
   padding-top: 35px;
   padding-bottom: 25px;
+  text-align: center;
 }
 
 header h1 {
-  font-family: 'Chivo', 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: 'Patua One', serif;
   font-size: 48px; font-weight: 900;
   line-height: 1.2;
   color: #303030;
   letter-spacing: -1px;
+  text-shadow: 1px 2px 0 #fff;
 }
 
 header h2 {
   font-size: 24px;
   font-weight: normal;
   line-height: 1.3;
-  color: #aaa;
-  letter-spacing: -1px;
+  color: #888;
+  letter-spacing: -1px;  
 }
 
 #container {
   min-height: 595px;
-  background: transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat;
-}
-
-.inner {
-  width: 620px;
-  margin: 0 auto;
 }
 
 #container .inner img {
@@ -100,11 +95,11 @@ header h2 {
 
 #downloads {
   margin-bottom: 40px;
+  text-align: center;
 }
 
 a.button {
-  display: block;
-  float: left;
+  display: inline-block;
   width: 179px;
   padding: 12px 8px 12px 8px;
   margin-right: 14px;
@@ -147,27 +142,23 @@ a.button:hover {
 }
 
 a.button span {
-  display: block;
+  display: inline-block;
   height: 23px;
-  padding-left: 50px;
+  padding-left: 10px;
 }
 
-#download-zip span {
-  background: transparent url(../images/zip-icon.png) 12px 50% no-repeat;
+a.button span.fa{
+  font-size: 24px;
+  padding-left: 0;
 }
-#download-tar-gz span {
-  background: transparent url(../images/tar-gz-icon.png) 12px 50% no-repeat;
-}
-#view-on-github span {
-  background: transparent url(../images/octocat-icon.png) 12px 50% no-repeat;
-}
+
 #view-on-github {
   margin-right: 0;
 }
 
 code, pre {
   margin-bottom: 30px;
-  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal;
+  font-family: Monaco, "Lucida Console", Terminal;
   font-size: 14px;
   color: #222;
 }
@@ -200,12 +191,7 @@ ul, ol, dl {
 /* COMMON STYLES */
 
 hr {
-  height: 1px;
-  padding-bottom: 1em;
-  margin-top: 1em;
-  line-height: 1px;
-  background: transparent url('../images/hr.png') 50% 0 no-repeat;
-  border: none;
+  color: #ccc;
 }
 
 strong {
@@ -216,25 +202,18 @@ em {
   font-style: italic;
 }
 
-table {
-  width: 100%;
-  border: 1px solid #ebebeb;
-}
-
-th {
-  font-weight: 500;
-}
-
-td {
-  font-weight: 300;
-  text-align: center;
-  border: 1px solid #ebebeb;
-}
-
 form {
   padding: 20px;
   background: #f2f2f2;
 
+}
+
+th{
+  font-weight: bold;
+}
+
+.center{
+  text-align: center;
 }
 
 
@@ -276,6 +255,7 @@ h6 {
 
 p {
   margin-bottom: 20px;
+  text-align: justify;
   font-weight: 300;
 }
 
@@ -315,12 +295,11 @@ footer {
   padding-bottom: 30px;
   margin-top: 40px;
   font-size: 13px;
-  color: #aaa;
-  background: transparent url('../images/hr.png') 0 0 no-repeat;
+  color: #888;
 }
 
 footer a {
-  color: #666;
+  color: #555;
 }
 footer a:hover {
   color: #444;
