@@ -28,39 +28,7 @@ angular.module('app', ['pchiwan.directives', 'app.controllers']);
 			{ Cid: '',       ClientName: 'Client 3', Cuid: '14964', Enabled: false, EntityName: 'Entity 5', CountryId: 'DE', CountryName: 'Germany' }
 	    ];
 	    this.searchExpr = '';
-	    this.filterFunction = null;
-	    this.filteredDataSource = [];
-
-	    // Object.defineProperty(this, 'filteredDataSource', {
-	    //       get: function () {
-	    //             var arr = self.dataSource;
-	    //             if (!!self.filterFunction) {
-	    //                   arr = _.filter(self.dataSource, self.filterFunction);
-	    //             }
-	    //             console.log('recalculate filtered data source');
-	    //             return $filter('filter')(arr, self.searchExpr);
-	    //       }
-	    // });	    
-
-		var filterDataSource = function () {
-			var arr = self.dataSource;
-            if (!!self.filterFunction) {
-              arr = _.filter(self.dataSource, self.filterFunction);
-            }
-            self.filteredDataSource = $filter('filter')(arr, self.searchExpr);
-		};
-
-		$scope.$watch(angular.bind(this, function () {
-			return self.dataSource;
-		}), filterDataSource);
-
-		$scope.$watch(angular.bind(this, function () {
-			return self.filterFunction;
-		}), filterDataSource);
-
-      	$scope.$on('filterPanel.applyFilters', function (event, data) {
-          	self.filterFunction = data;
-	    });
+	    this.filteredDataSource = this.dataSource;
 	}
 
 	angular.module('app.controllers')

@@ -110,9 +110,10 @@ angular.module('pchiwan.directives')
 				filterConditions = generateFilterConditions();
 
 				filterFunction = new Function('item', 'return {0};'.format(!!filterConditions ? filterConditions : 'true'));
-				$scope.$emit('filterPanel.applyFilters', filterFunction);
+				$scope.filteredSource = _.filter($scope.originalSource, filterFunction);
 
-				createFilters(_.filter($scope.originalSource, filterFunction));
+				//refresh filters
+				createFilters($scope.filteredSource);
 			};
 
 			//#endregion
@@ -127,7 +128,8 @@ angular.module('pchiwan.directives')
 			controller: ['$scope', '$attrs', controller],
 			controllerAs: 'fpCtrl',
 			scope: {
-				originalSource: '=source'
+				originalSource: '=source',
+				filteredSource: '='
 			},
 			template: 
 				'<div class="filter-panel container-fluid">' +

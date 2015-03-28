@@ -10,7 +10,7 @@
 
     <script text="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
     <script text="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
-    <script text="text/javascript" src="https://rawgit.com/pchiwan/angular-filter-panel/master/release/angular-filter-panel.js"></script>
+    <script text="text/javascript" src="../release/angular-filter-panel.js"></script>
     <script text="text/javascript" src="demo.js"></script>
 
     <style>
@@ -42,7 +42,7 @@
       <h1>Angular filter panel</h1>
       <hr>
       <div class="filter-container">
-        <filter-panel source="ctrl.dataSource" filter-props="ClientName,CountryName,Enabled"></filter-panel>
+        <filter-panel source="ctrl.dataSource" filtered-source="ctrl.filteredDataSource" filter-props="ClientName,CountryName,Enabled"></filter-panel>
       </div>
       <hr>
       <div>
@@ -64,7 +64,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in ctrl.filteredDataSource">
+            <tr ng-repeat="item in ctrl.filteredDataSource | filter: ctrl.searchExpr">
               <td>{{item.Cid}}</td>
               <td>{{item.ClientName}}</td>
               <td>{{item.Cuid}}</td>
