@@ -48,14 +48,15 @@
         <section id="main_content" ng-controller="appCtrl">
           <h3>Introduction</h3>
 
+          <p>Tne filter panel is an Angular directive which you can include in any HTML page, bind it to a controller, and it will provide you with a very easy, very fast, and very useful tool to filter the data displayed on a grid (or whatever component your data is bound to). Let's get to the point!</p>
 
           <h3>Requirements</h3>
 
-          <p><a href="http://angularjs.org/" target="_blank">AngularJS</a>, obviously. Although really the magic of the filter panel is possible thanks to the amazing <a href="http://underscorejs.org/" target="_blank">Underscore.js</a>. So don't forget to include it in your project! Also, the template of the filter panel is styled using Bootstrap classes, but if you don't want to include Bootstrap in your project it's ok. Simply keep in mind that, once rendered, the filter panel will probably look weird and quite ugly if you did not include Bootstrap.</p>
+          <p><a href="http://angularjs.org/" target="_blank">AngularJS</a>, obviously. Although really the magic of the filter panel is possible thanks to the amazing <a href="http://underscorejs.org/" target="_blank">Underscore.js</a>. So don't forget to include it in your project! Also, the template of the filter panel is styled using <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap</a>, but if you don't want to include Bootstrap in your project it's ok. Simply keep in mind that, once rendered, the filter panel will probably look weird and quite ugly if you did not include Bootstrap.</p>
 
           <h3>Instructions</h3>
 
-          <p>First of all, let's assume you have a data source (an array of objects) in your Angular controller; it looks something like this:</p> 
+          <p>First of all, let's assume you have a property in your Angular controller where you store your page's data source (an array of objects). In order to use the filter panel you should also have a "filtered" data source property. Your controller could look something like this:</p> 
 
   <div class="highlight highlight-javascript"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span>, [])
     .controller(<span class="pl-s"><span class="pl-pds">'</span>appCtrl<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">$scope</span>) {
@@ -79,32 +80,49 @@
         ];
 
         $scope.dataSource <span class="pl-k">=</span> items;
+        $scope.filteredDataSource <span class="pl-k">=</span> $scope.dataSource;
     });</pre></div>
 
-          <p>Obviously this array of objects would very probably be asynchronously populated by an AJAX request!</p>
+          <p>[Obviously this array of objects would very probably be asynchronously populated by an AJAX request!]</p>
 
-          <p>It's very easy to include a filter panel in your HTML page. The filter panel is restricted to element, and you need to provide it with two attributes only.</p>
+          <p>It's very easy to include a filter panel in your HTML page. You must use the tag <code>&lt;filter-panel&gt;&lt;/filter-panel&gt;</code> and provide it with the following three attributes.</p>
 
           <h4>source</h4>
           <p>This is your data source. Don't worry, the filter panel won't tamper your data, it simply wants to play with it.</p>
 
+          <h4>filtered-source</h4>
+          <p>This is the filtered data source, and it's the one you should actually bind to your page's grid. The filter panel will store the result of filtering the original data source in this property.</p>
+
           <h4>filter-props</h4>
           <p>These are the names of the properties in your data source objects that you want the data to be filtered by. Of course you could specify them all, but it makes sense to filter your data only by those properties which hold non-unique values.</p>
 
-  <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">filter</span><span class="pl-e">-panel</span> <span class="pl-e">source</span>=<span class="pl-s"><span class="pl-pds">"</span>dataSource<span class="pl-pds">"</span></span> <span class="pl-e">filter-props</span>=<span class="pl-s"><span class="pl-pds">"</span>Code,Sport,Country,Enabled<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">filter</span><span class="pl-e">-panel</span>&gt;  </pre></div>
+  <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">ng-controller</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">filter</span><span class="pl-e">-panel</span> <span class="pl-e">source</span>=<span class="pl-s"><span class="pl-pds">"</span>dataSource<span class="pl-pds">"</span></span> <span class="pl-e">filtered-source</span>=<span class="pl-s"><span class="pl-pds">"</span>filteredDataSource<span class="pl-pds">"</span></span> <span class="pl-e">filter-props</span>=<span class="pl-s"><span class="pl-pds">"</span>Code,Sport,Country,Enabled<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">filter</span><span class="pl-e">-panel</span>&gt;
+    &lt;<span class="pl-ent">hr</span>&gt;
+    &lt;<span class="pl-ent">table</span>&gt;
+         &lt;<span class="pl-ent">tbody</span>&gt;
+            &lt;<span class="pl-ent">tr</span> <span class="pl-e">ng-repeat</span>=<span class="pl-s"><span class="pl-pds">"</span>item in filteredDataSource<span class="pl-pds">"</span></span>&gt;
+                &lt;<span class="pl-ent">td</span>&gt;{{item.Id}}&lt;/<span class="pl-ent">td</span>&gt;
+                &lt;<span class="pl-ent">td</span>&gt;{{item.Client}}&lt;/<span class="pl-ent">td</span>&gt;
+                &lt;<span class="pl-ent">td</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>center<span class="pl-pds">"</span></span>&gt;{{item.Code}}&lt;/<span class="pl-ent">td</span>&gt;
+                &lt;<span class="pl-ent">td</span>&gt;{{item.Sport}}&lt;/<span class="pl-ent">td</span>&gt;
+                &lt;<span class="pl-ent">td</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>center<span class="pl-pds">"</span></span>&gt;&lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>checkbox<span class="pl-pds">"</span></span> <span class="pl-e">ng-model</span>=<span class="pl-s"><span class="pl-pds">"</span>item.Enabled<span class="pl-pds">"</span></span> /&gt;&lt;/<span class="pl-ent">td</span>&gt;
+                &lt;<span class="pl-ent">td</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>center<span class="pl-pds">"</span></span>&gt;{{item.Country}}&lt;/<span class="pl-ent">td</span>&gt;
+            &lt;/<span class="pl-ent">tr</span>&gt;
+        &lt;/<span class="pl-ent">tbody</span>&gt;
+    &lt;/<span class="pl-ent">table</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>          
 
           <p>Whenever your data source changes, the filter panel will process it, grouping the data by the specified properties and generating the filter groups. The available filter values will be displayed on the filter panel.</p>
 
-          <div>
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <filter-panel source="dataSource" filter-props="Code,Sport,Country,Enabled"></filter-panel>                  
-              </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <filter-panel source="dataSource" filtered-source="filteredDataSource" filter-props="Code,Sport,Country,Enabled"></filter-panel>
             </div>
           </div>
 
-          <p>Once you select some filter values and click <code>APPLY</code>, the filter panel performs its magic.</p>
-          
+          <p>Once you select some filter values and click <code>APPLY</code>, the filter panel performs its magic and your data is instantly filtered. By clicking <code>CLEAR ALL</code> the filter panel will clear the selected filter values (you will still have to click <code>APPLY</code> again for the filtered data source to be updated as well).</p>
+
           <div class="panel panel-default">
             <div class="panel-body">
               <table class="table">
@@ -132,11 +150,9 @@
             </div>
           </div>
 
-          <p>We're almost there. You'll have to add some code in your Angular controller as well.</p>
-
           <h3>Try it</h3>
 
-          <p>If you want to see or fiddle around with the code for a very similar example, <a href="http://plnkr.co/edit/MUImLa8czoZeFn4Gc9dH?p=preview" target="_blank">here's</a> a plunk for you.</p>
+          <p>If you want to see or fiddle around with the code of this example, <a href="http://plnkr.co/edit/MUImLa8czoZeFn4Gc9dH?p=preview" target="_blank">here's</a> a plunk for you.</p>
 
          
           <h3>Style it</h3>
