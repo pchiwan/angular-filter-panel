@@ -216,6 +216,15 @@ th{
   text-align: center;
 }
 
+.li{
+  color: #d5000d;
+  margin-right: 5px;
+}
+
+.req{
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
 
 /* GENERAL ELEMENT TYPE STYLES */
 
