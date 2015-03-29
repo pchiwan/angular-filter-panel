@@ -3,9 +3,13 @@ A filter panel for any data source, made with AngularJS
 
 ## Introduction
 
+Tne filter panel is an Angular directive which you can include in any HTML page, bind it to a controller, and it will provide you with a very easy, very fast, and very useful tool to filter the data displayed on a grid (or whatever component your data is bound to). Let's get to the point!
+
 ## Requirements
 
-[AngularJS](http://angularjs.org), obviously. Although really the magic of the filter panel is possible thanks to the amazing [Underscorejs.org](http://underscorejs.org). So don't forget to include it in your project! Also, the template of the filter panel is styled using [Bootstrap](http://getbootstrap.com/css/), but if you don't want to include Bootstrap in your project it's ok. Simply keep in mind that, once rendered, the filter panel will probably look weird and quite ugly if you did not include Bootstrap.
++ [AngularJS](http://angularjs.org), obviously. 
++ [Underscore.js](http://underscorejs.org). The magic of the filter panel is actually possible thanks to the amazing Underscorejs. So don't forget to include it in your project!
++ [Bootstrap](http://getbootstrap.com/css/). The template of the filter panel is styled using Bootstrap but it's ok if you don't want to include it in your project. Simply keep in mind that, once rendered, the filter panel will probably look weird and quite ugly if you did not include Bootstrap.
 
 ## Instructions
 
